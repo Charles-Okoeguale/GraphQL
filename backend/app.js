@@ -2,12 +2,13 @@ import { ApolloServer, gql } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
-import {data} from './data.js';
+import {categories, data} from './data.js';
 
 const typeDefs = gql `
     type Query {
         products: [Product!]!
         product (name: ID!): Product
+        categories: [Category!]!
     }
 
     type Product {
@@ -15,6 +16,11 @@ const typeDefs = gql `
         price: Int!
         onSale: Boolean!
         description: String!
+    }
+
+    type Category {
+        id : String!
+        name: String!
     }
 `
  
@@ -26,13 +32,13 @@ const resolvers = {
             const product = data.find((p) => p.name === productName)
             if (!product) return null
             return product
-        } 
+        },
+        categories: () => categories
     }
 }
 
 async function startApolloServer(typeDefs, resolvers) {
   const app = express();
-
   const httpServer = http.createServer(app);
 
   const server = new ApolloServer({
