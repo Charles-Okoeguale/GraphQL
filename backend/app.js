@@ -9,6 +9,7 @@ const typeDefs = gql `
         products: [Product!]!
         product (name: ID!): Product
         categories: [Category!]!
+        category (name: ID!) : Category!
     }
 
     type Product {
@@ -33,7 +34,11 @@ const resolvers = {
             if (!product) return null
             return product
         },
-        categories: () => categories
+        categories: () => categories,
+        category: (parent, args, context) => {
+            const {name} = args
+            console.log(name)
+        }
     }
 }
 
