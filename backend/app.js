@@ -6,10 +6,10 @@ import {categories, data} from './data.js';
 
 const typeDefs = gql `
     type Query {
-        products: [Product!]!
+        category (name: ID!): Category!
         product (name: ID!): Product
+        products: [Product!]!
         categories: [Category!]!
-        category (name: ID!) : Category!
     }
 
     type Product {
@@ -17,11 +17,14 @@ const typeDefs = gql `
         price: Int!
         onSale: Boolean!
         description: String!
+        categoryId: String!
+        category: Category
     }
 
     type Category {
-        id : String!
+        id: String!
         name: String!
+        products: [Product!]!
     }
 `
  
@@ -37,7 +40,19 @@ const resolvers = {
         categories: () => categories,
         category: (parent, args, context) => {
             const {name} = args
-            console.log(name)
+            return categories.find((c) => c.name === name)
+        }
+    },
+    Category: {
+        products : (parent, args, context) => {
+            const categoryId = parent.id
+            return data.filter((d) => d.categoryId === categoryId)
+        }
+    },
+    Product: {
+        category: (parent, args, context) => {
+            const {categoryId} = parent
+            return categories.find((c) => c.id === categoryId)
         }
     }
 }
@@ -48,7 +63,7 @@ async function startApolloServer(typeDefs, resolvers) {
 
   const server = new ApolloServer({
     typeDefs, // how data is going to look like or a schema
-    resolvers, // function that's responsible for populating the data for a single field in your schema or function fired
+    resolvers, // function that fires based on the particular typeDef (schema)
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
  

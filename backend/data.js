@@ -1,6 +1,7 @@
 export const data = [
     {
       id: "53a0724c-a416-4cac-ae45-bfaedce1f147",
+      categoryId: "KitchenCategory",
       name: "Steel Pot",
       description: "Silver steel pot that is perfect for cooking",
       quantity: 230,
@@ -10,6 +11,7 @@ export const data = [
     },
     {
       id: "c2af9adc-d0b8-4d44-871f-cef66f86f7f6",
+      categoryId: "KitchenCategory",
       name: "Salad Bowl",
       description: "Round wooden bowl perfect for tossing and making salads",
       quantity: 33,
@@ -19,6 +21,7 @@ export const data = [
     },
     {
       id: "2c931e7e-510f-49e5-aed6-d6b44087e5a1",
+      categoryId: "KitchenCategory",
       name: "Spoon",
       description: "Small and delicate spoon",
       quantity: 4266,
@@ -28,6 +31,7 @@ export const data = [
     },
     {
       id: "404daf2a-9b97-4b99-b9af-614d07f818d7",
+      categoryId: "GardenCategory",
       name: "Shovel",
       description: "Grey rounded shovel for digging",
       quantity: 753,
@@ -37,6 +41,7 @@ export const data = [
     },
     {
       id: "6379c436-9fad-4b3f-a427-2d7241f5c1b1",
+      categoryId: "GardenCategory",
       name: "Fertilizer",
       description: "Nitrogen based fertitlizer",
       quantity: 53453,
@@ -46,6 +51,7 @@ export const data = [
     },
     {
       id: "f01bcdec-6783-464e-8f9e-8416830f7569",
+      categoryId: "SportsCategory",
       name: "Basketball",
       description: "Outdoor or indoor basketball",
       quantity: 128,
@@ -55,6 +61,7 @@ export const data = [
     },
     {
       id: "a4824a31-5c83-42af-8c1b-6e2461aae1ef",
+      categoryId: "SportsCategory",
       name: "Golf Clubs",
       description: "Good for golfing",
       quantity: 3,
@@ -64,6 +71,7 @@ export const data = [
     },
     {
       id: "b553085a-a7e0-4c9b-8a12-f971919c3683",
+      categoryId: "SportsCategory",
       name: "Baseball Gloves",
       description: "Professional catcher gloves",
       quantity: 745,
@@ -73,6 +81,7 @@ export const data = [
     },
     {
       id: "47bf3941-9c8b-42c0-9c72-7f3985492a5b",
+      categoryId: "SportsCategory",
       name: "Soccer Ball",
       description: "Round ball",
       quantity: 734,
@@ -86,15 +95,15 @@ export const data = [
   
 export const categories = [
   {
-    id: "c01b1ff4-f894-4ef2-b27a-22aacc2fca70",
+    id: "KitchenCategory",
     name: "Kitchen",
   },
   {
-    id: "34115aac-0ff5-4859-8f43-10e8db23602b",
+    id: "GardenCategory",
     name: "Garden",
   },
   {
-    id: "d914aec0-25b2-4103-9ed8-225d39018d1d",
+    id: "SportsCategory",
     name: "Sports",
   },
 ];
