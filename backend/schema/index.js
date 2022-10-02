@@ -4,7 +4,7 @@ export const typeDefs = gql `
     type Query {
         category (name: ID!): Category!
         product (name: ID!): Product
-        products: [Product!]!
+        products (filter: filterValue): [Product!]!
         categories: [Category!]!
     }
 
@@ -29,5 +29,9 @@ export const typeDefs = gql `
         date: String!
         rating: Int!
         title: String!
+    }
+
+    input filterValue {
+        onSale: Boolean
     }
 `

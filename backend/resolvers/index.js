@@ -2,7 +2,18 @@ import {categories, data, reviews} from '../data.js';
 
 export const resolvers = {
     Query: {
-        products: () => data,
+        products: (parent, args, context) => {
+            const {filter} = args
+            let filteredData = data
+            if (filter) {
+                if (filter.onSale === true) {
+                    filteredData = filteredData.filter((d) => {
+                        return d.onSale
+                    })
+                }
+            }
+            return filteredData
+        },
         product : (parent, args, context) => {
             const productName = args.name
             const product = data.find((p) => p.name === productName)
