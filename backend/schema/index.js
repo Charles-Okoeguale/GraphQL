@@ -15,11 +15,19 @@ export const typeDefs = gql `
         description: String!
         categoryId: String!
         category: Category
+        review: [Review!]!
     }
 
     type Category {
         id: String!
         name: String!
         products: [Product!]!
+    }
+
+    type Review {
+        comment: String!
+        date: String!
+        rating: Int!
+        title: String!
     }
 `
